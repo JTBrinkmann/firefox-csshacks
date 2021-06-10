@@ -1,0 +1,11 @@
+#TabsToolbar {
+  visibility: collapse;
+}
+
+#titlebar {
+  display: none;
+}
+
+#main-window[sizemode="maximized"] #nav-bar {
+  padding-top: 8px;
+}
