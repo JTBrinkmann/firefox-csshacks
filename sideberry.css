@@ -1,0 +1,21 @@
+/* add these styles to moz-extension://040e9d0c-18d1-4fde-9fa0-e77f1fae4703/settings/settings.html#styles_editor */
+
+/* move container color-bar to the lfet */
+.Tab .ctx {
+  left: 0;
+  right: auto;
+  width: 3px;
+}
+/* hide default container color-bar */
+.Tab[data-color="toolbar"] .ctx {
+  display: none;
+}
+/* add dim colored background depending on container color */
+.Tab:not(.Tab[data-color="toolbar"])::before {
+  content: " ";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: var(--container-fg);
+  opacity: 0.2;
+}
