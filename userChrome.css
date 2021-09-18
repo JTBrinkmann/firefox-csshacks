@@ -1,29 +1,30 @@
 /* Example userChrome.css file */
 
 /* Import your desired components first */
-
-@import url(chrome/button_effect_scale_onclick.css);
-/*@import url(chrome/dark_context_menus.css);
-@import url(chrome/dark_additional_windows.css);
-@import url(chrome/dark_checkboxes_and_radios.css);*/
-/*@import url(chrome/minimal_text_fields.css);*/
-@import url(chrome/urlbar_centered_text.css);
-
-/*@import url(chrome/tab_loading_progress_throbber.css);*/
-/*@import url(chrome/tab_close_button_always_on_hover.css);*/
 @import url(chrome/hide_tabs_toolbar.css);
 @import url(chrome/window_control_placeholder_support.css);
 
+@import url(chrome/loading_indicator_bouncing_line.css);
 @import url(chrome/urlbar_connection_type_colors.css);
-/*@import url(chrome/urlbar_results_in_two_rows.css);*/
+
+@import url(chrome/urlbar_centered_text.css);
+@import url(chrome/button_effect_scale_onclick.css);
+@import url(chrome/menulike_bookmarks_folder_popups.css);
+
 
 /* Apply your custom modifications after imports */
 
-/* reduce drag-space between window controls and toolbar */
+/** reduce drag-space between window controls and toolbar */
 :root[tabsintitlebar]{
   --uc-window-drag-space-width: 0px; /* Extra space reserved on both sides of the nav-bar to be able to drag the window */
 }
-/* add small draggable area above toolbar */
+
+/** animate toolbar when hovered in fullscreen (might affect performance on websites with complex layouts) */
+:root[sizemode="fullscreen"] #navigator-toolbox {
+  transition: margin-top 100ms ease-out;
+}
+
+/** add small draggable area above toolbar */
 :root:not([uidensity="compact"]){
   --uc-toolbar-height: 46px;
 }
@@ -34,16 +35,18 @@
   margin-top: -2px;
 }
 
-/* urlbar: hide
-   - default container icon
-   - "always open in this container" button
-*/
+/** add minimum width to flexible spacers in toolbar */
+#nav-bar:not([customizing]) toolbarspring {
+    min-width: 32px !important;
+}
+
+/** urlbar: hide default container icon & "always open in this container" button */
 #pageAction-urlbar-_testpilot-containers,
 #userContext-indicator.identity-icon-circle {
   display: none;
 }
 
-/* urlbar: dim container name */
-.identity-color-toolbar {
-  --identity-tab-color: #666;
+/** urlbar: dim default container name color (great for Temporary Containers) */
+#urlbar .identity-color-toolbar {
+  --identity-tab-color: var(--toolbar-bgcolor) !important;
 }
