@@ -3,6 +3,7 @@ See the above repository for updates as well as full license text. */
 
 /* Shows a left-right bouncing line at the top of the content area during navigation */
 
+:root { --loading-indicator-color: rgb(170, 0, 70) }
 @keyframes statusline-anim{from{background-position-x: left}to{background-position-x: right}}
 #statuspanel[type="status"]::after{
   position: fixed;
@@ -15,7 +16,7 @@ See the above repository for updates as well as full license text. */
   pointer-events: none;
   background-size: 20%;
   background-repeat: no-repeat;
-  background-image: linear-gradient(to left,transparent,rgb(170,0,70),transparent);
+  background-image: linear-gradient(to left,transparent,var(--loading-indicator-color),transparent);
   animation: statusline-anim 400ms alternate infinite ease-in-out;
 }
 

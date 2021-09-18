@@ -50,3 +50,14 @@
 #urlbar .identity-color-toolbar {
   --identity-tab-color: var(--toolbar-bgcolor) !important;
 }
+
+/** customize loading indicator */
+@keyframes statusline-anim{
+  from { background-position-x: -20%; }
+  to { background-position-x: 100%; }
+}
+#statuspanel[type="status"]::after{
+  animation: statusline-anim 2s infinite linear;
+  background-image: linear-gradient(to left, transparent, #0091d4, transparent);
+  background-repeat: repeat-x;
+}
